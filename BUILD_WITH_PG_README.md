@@ -11,9 +11,10 @@ Building Telegraf with TimescaleDB and PostgreSQL plugin
 9. Change the `cmd/telegraf/telegraf.go` 
    * remove line 64 (version string) from the var block
    * create a const version with e.g `const version = "1.10.4-with-pg"`
-10. Make a commit with them to the current branch
-11. Tag the current commit with $VERSION_NAME-with-pg e.g. `1.10.4-with-pg`
-12. Run `fake_build.sh` and wait for the Linux and Windows versions to be build and put into `build/`
-13. run `mkdir ./build/macos/` and `go build -o ./build/macos/telegraf ./cmd/telegraf/`
-14. Do what you want with the ./build folder
+10. Change the `plugins/output/all/all.go` file to import our plugin. Just add `_ "github.com/influxdata/telegraf/plugins/outputs/postgresql"` somewhere in the imports (preferrably in maintaining the alphabetical order)
+11. Make a commit with them to the current branch
+12. Tag the current commit with $VERSION_NAME-with-pg e.g. `1.10.4-with-pg`
+13. Run `fake_build.sh` and wait for the Linux and Windows versions to be build and put into `build/`
+14. run `mkdir ./build/macos/` and `go build -o ./build/macos/telegraf ./cmd/telegraf/`
+15. Do what you want with the ./build folder
 
